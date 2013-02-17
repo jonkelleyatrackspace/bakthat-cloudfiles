@@ -14,7 +14,11 @@ Some features of the suite:
 * Install gcc, make, and the python devel libraries with your favorite package manager.
 * `easy_install pip` if you do not already have pip installed with your python distribution.
 * You will need to install the modules required via pip `pip install -r reqs.txt`
-	
+Modules: ```aaargh
+beefish
+pycrypto
+boto
+python-swiftclient```
 
 # What do these files do?
 ## bakthatswift.py
@@ -113,18 +117,6 @@ PRO-TIP: Adding --noop with any value after it causes no-op to take effect.
 ### Retrieve md5 for explicit file in container.
 `/usr/bin/env python bakthatswift.py md5 -c bakthatswift.conf -f filename-for-wanted-md5-value`
 
-
-
-
-
-
-
-
-pip-2.6 install aaargh
-yum install gcc make python26-devel
-pip-2.6 install beefish pycrypto boto python-cloudfiles 
-
-cd /opt
-git clone git://github.com/jonkelleyatrackspace/cloudbackup.git
-cd cloudbackup
+## When will this be ported to bakthat main project?
+I will need to get an Amazon account and do cross-service level testing when I get a chance in my spare time to backport this to the original codebase. However, it is possible and should be simple.
 
