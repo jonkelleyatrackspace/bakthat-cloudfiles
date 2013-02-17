@@ -1,10 +1,13 @@
 # bakthat - with Rackspace swift (cloudfiles) support.
 This tool has the option to upload compressed copies of files into a cloudfiles container account.
-It can also:
-	* Encrypt using with a password (uses aes and blowfish combined using pycrpto library)
-	* Restore files from the remote end (and decrypt)
-	* List files in cloudfiles (gets name, md5sum, bytesize)
-	* Hooks as a module so you can do stuff with your own scripts using its internal class methods.
+Some features of the suite:
+* Uses swift-common client.py implementation which improves performance and reliability over the issues commonly brought up about duplicity.
+* Compresses all of the files with gzip before sending.
+* Has option to encrypt with a password (blowfish+aes) with pycrpto library.
+* Restoration of files from cloudfiles to local disk is supported.
+* List, Delete, Backup, and Restore currently supported.
+* bakthat can be hooked as a module so you can write your own scripts, or use mine- filewalker.py
+
 
 ## What are the requirements?
 * Python 2.6 or 2.7 tested.
