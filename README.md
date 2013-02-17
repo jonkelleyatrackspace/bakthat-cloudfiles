@@ -76,21 +76,21 @@ region_name = dfw
 
 ### Command examples:
 #### Execute a backup WITHOUT PERFORMING ANY OPERATION, use this first!
-python2.7 filewalker.py backup --config filewalker.conf --noop true
+`/usr/bin/env python filewalker.py backup --config filewalker.conf --noop true`
 
 ####  Execute a backup based on your settings:
-python2.7 filewalker.py backup --config filewalker.conf
+`/usr/bin/env python filewalker.py backup --config filewalker.conf`
 
 ####  Restore a backup from remote end.
 Remember to add .enc if it is an encrypted file!
 You will be asked for the crypto password, and the file will be extracted in the local directory.
-python2.7 filewalker.py restore -f name-of-file.bz2.tgz.enc --config filewalker.conf
+`/usr/bin/env python filewalker.py restore -f name-of-file.bz2.tgz.enc --config filewalker.conf`
 
 # Command examples
 ## filewalker.py
 ### Run a backup in test mode (zero action taken)
 PRO-TIP: Adding --noop with any value after it causes no-op to take effect.
- filewalker.py backup --config filewalker.conf --noop true`
+`/usr/bin/env python filewalker.py backup --config filewalker.conf --noop true`
 
 ### Run a backup against the configured directory.
 `/usr/bin/env python filewalker.py backup --config filewalker.conf`
