@@ -21,7 +21,7 @@ Some features of the suite:
 This contains the core classes for crypto, compression, and the wrapper for the swift common client. It acts as a module and as a standalone application. It's a fork of a project called bakthat (https://github.com/tsileo/bakthat) and I have plans to push my changes back into the original software when I get in touch with the author.
 
 Reads config from bakthatswift.conf, example config:
-[cf]
+```[cf]
 apiuser = USER
 apikey = KEY
 container = CONTAINER
