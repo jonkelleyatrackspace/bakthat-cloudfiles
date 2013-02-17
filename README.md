@@ -1,4 +1,4 @@
-# bakthat - with swift support.
+# bakthat - with Rackspace swift (cloudfiles) support.
 This tool has the option to upload compressed copies of files into a cloudfiles container account.
 It can also:
 	* Encrypt using with a password (uses aes and blowfish combined using pycrpto library)
