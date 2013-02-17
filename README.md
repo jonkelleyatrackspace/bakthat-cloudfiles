@@ -13,7 +13,7 @@ It can also:
 * You will need to install the modules required via pip `pip install -r reqs.txt`
 	
 
-# Explanation of the utilities:
+# What do these files do?
 ## bakthatswift.py
 This contains the core classes for crypto, compression, and the wrapper for the swift common client. It acts as a module and as a standalone application. It's a fork of a project called bakthat (https://github.com/tsileo/bakthat) and I have plans to push my changes back into the original software when I get in touch with the author.
 
