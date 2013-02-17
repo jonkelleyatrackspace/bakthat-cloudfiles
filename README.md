@@ -73,19 +73,6 @@ apikey = key
 container = test
 region_name = dfw
 ```
-
-### Command examples:
-#### Execute a backup WITHOUT PERFORMING ANY OPERATION, use this first!
-`/usr/bin/env python filewalker.py backup --config filewalker.conf --noop true`
-
-####  Execute a backup based on your settings:
-`/usr/bin/env python filewalker.py backup --config filewalker.conf`
-
-####  Restore a backup from remote end.
-Remember to add .enc if it is an encrypted file!
-You will be asked for the crypto password, and the file will be extracted in the local directory.
-`/usr/bin/env python filewalker.py restore -f name-of-file.bz2.tgz.enc --config filewalker.conf`
-
 # Command examples
 ## filewalker.py
 ### Run a backup in test mode (zero action taken)
@@ -96,6 +83,7 @@ PRO-TIP: Adding --noop with any value after it causes no-op to take effect.
 `/usr/bin/env python filewalker.py backup --config filewalker.conf`
 
 ### Run a restore.
+Remember to add .enc if it's encrypted.
 `/usr/bin/env python filewalker.py restore --config filewalker.conf -f remote-filename-to-restore`
 
 ## bakthatswift.py
