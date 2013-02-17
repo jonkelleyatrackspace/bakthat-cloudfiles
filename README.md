@@ -26,6 +26,7 @@ apiuser = USER
 apikey = KEY
 container = CONTAINER
 region_name = dfw
+```
 (NOTE: For now, for this application to work, you need to also configure classauth.conf with matching api key settings.)
 
 ## classauth.py
