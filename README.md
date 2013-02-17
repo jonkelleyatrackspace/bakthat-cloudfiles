@@ -119,6 +119,7 @@ PRO-TIP: Adding --noop with any value after it causes no-op to take effect.
 
 
 
+
 pip-2.6 install aaargh
 yum install gcc make python26-devel
 pip-2.6 install beefish pycrypto boto python-cloudfiles 
