@@ -20,7 +20,7 @@ Some features of the suite:
 ## bakthatswift.py
 This contains the core classes for crypto, compression, and the wrapper for the swift common client. It acts as a module and as a standalone application. It's a fork of a project called bakthat (https://github.com/tsileo/bakthat) and I have plans to push my changes back into the original software when I get in touch with the author.
 
-Reads config from bakthatswift.conf, example config:
+### Sample bakthatswift.conf
 ```[cf]
 apiuser = USER
 apikey = KEY
@@ -35,8 +35,8 @@ Handles the authentication for cloudfiles library. It caches the auth token to d
 Known problems:
 You must make the config file (below) match the credentials you have configured in either filewalker.conf or bakthatswift.conf.
 
-### Example classauth.conf
-[usa]
+### Sample classauth.conf
+```[usa]
 auth_url = https://identity.api.rackspacecloud.com/v2.0/tokens
 username = user
 apikey = key
@@ -47,6 +47,7 @@ auth_url = https://identity.api.rackspacecloud.com/v2.0/tokens
 username = user
 apikey = key
 json_cache_pckl_file = /tmp/authkey.lon.pckl
+```
 
 ## filewalker.py
 This file can walk files within a directory and only back up files older then a time in seconds. It can automatically delete the
@@ -56,18 +57,18 @@ on cloudfiles, and will skip the local backup after logging the error.
 You can execute this directly if you don't want to write your own apps to utilize bakthatswift.py.
 
 ###Sample filewalker.conf
-[filewalker]
+```[filewalker]
 backup_age = 1  # How many seconds before this is applicable for a backup?
 delete_afterwards = True # Should we delete after verifying remote md5?
 backup_source = ~/backups/ 
 backup_password = test
-
 
 [cloudfilesSettings]
 apiuser = user
 apikey = key
 container = test
 region_name = dfw
+```
 
 ### Command examples:
 #### Execute a backup WITHOUT PERFORMING ANY OPERATION, use this first!
