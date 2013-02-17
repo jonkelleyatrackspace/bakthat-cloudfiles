@@ -1,4 +1,4 @@
-### bakthat - with swift support.
+# bakthat - with swift support.
 This tool has the option to upload compressed copies of files into a cloudfiles container account.
 It can also:
 	* Encrypt using with a password (uses aes and blowfish combined using pycrpto library)
@@ -13,8 +13,8 @@ You will need pip installed. You will need gcc, make, and the python-dev package
 To install the module dependecies run `pip install -r reqs.txt`
 	
 
-## Explanation of the utilities:
-# bakthatswift.py
+# Explanation of the utilities:
+## bakthatswift.py
 This contains the core classes for crypto, compression, and the wrapper for the swift common client. It acts as a module and as a standalone application. It's a fork of a project called bakthat (https://github.com/tsileo/bakthat) and I have plans to push my changes back into the original software when I get in touch with the author.
 
 Reads config from bakthatswift.conf, example config:
@@ -25,10 +25,13 @@ container = CONTAINER
 region_name = dfw
 (NOTE: For now, for this application to work, you need to also configure classauth.conf with matching api key settings.)
 
-# classauth.py
+## classauth.py
 Handles the authentication for cloudfiles library. It caches the auth token to disk locally to increase speed performance.
 
-Reads config from classauth.conf, example config:
+Known problems:
+You must make the config file (below) match the credentials you have configured in either filewalker.conf or bakthatswift.conf.
+
+### Example classauth.conf
 [usa]
 auth_url = https://identity.api.rackspacecloud.com/v2.0/tokens
 username = user
@@ -41,14 +44,14 @@ username = user
 apikey = key
 json_cache_pckl_file = /tmp/authkey.lon.pckl
 
-# filewalker.py
+## filewalker.py
 This file can walk files within a directory and move files older then a time in seconds. It can automatically delete the
 local copy after the remote end is uploaded with a verified md5sum. This script will also refuse to overwrite an existing filename
 on cloudfiles, and will skip the local backup after logging the error.
 
 You can execute this directly if you don't want to write your own apps to utilize bakthatswift.py.
 
-Sample filewalker.conf
+###Sample filewalker.conf
 [filewalker]
 backup_age = 1  # How many seconds before this is applicable for a backup?
 delete_afterwards = True # Should we delete after verifying remote md5?
@@ -62,16 +65,16 @@ apikey = key
 container = test
 region_name = dfw
 
-## Command examples:
-# Execute a backup WITHOUT PERFORMING ANY OPERATION, use this first!
+### Command examples:
+#### Execute a backup WITHOUT PERFORMING ANY OPERATION, use this first!
 python2.7 filewalker.py backup --config filewalker.conf --noop true
 
-# Execute a backup based on your settings:
+####  Execute a backup based on your settings:
 python2.7 filewalker.py backup --config filewalker.conf
 
-# Restore a backup from remote end.
-# Remember to add .enc if it is an encrypted file!
-# You will be asked for the crypto password, and the file will be extracted in the local directory.
+####  Restore a backup from remote end.
+Remember to add .enc if it is an encrypted file!
+You will be asked for the crypto password, and the file will be extracted in the local directory.
 python2.7 filewalker.py restore -f name-of-file.bz2.tgz.enc --config filewalker.conf
 
 
