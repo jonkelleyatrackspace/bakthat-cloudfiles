@@ -6,10 +6,10 @@ It can also:
 	* List files in cloudfiles (gets name, md5sum, bytesize)
 	* Hooks as a module so you can do stuff with your own scripts using its internal class methods.
 
-## How to get the dependecies:
-* Python 2.6-2.7 compatible.
-* You will need gcc, make, and your python development package installed. (To compile pycrpto C libs)
-* You will need pip installed, the pythonic way of acquiring packages.
+## What are the requirements?
+* Python 2.6 or 2.7 tested.
+* Install gcc, make, and the python devel libraries with your favorite package manager.
+* `easy_install pip` if you do not already have pip installed with your python distribution.
 * You will need to install the modules required via pip `pip install -r reqs.txt`
 	
 
