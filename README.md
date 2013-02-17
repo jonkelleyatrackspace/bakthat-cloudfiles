@@ -20,7 +20,7 @@ pycrypto
 boto
 python-swiftclient```
 
-# What do these files do?
+# What do these .py files do?
 ## bakthatswift.py
 This contains the core classes for crypto, compression, and the wrapper for the swift common client. It acts as a module and as a standalone application. It's a fork of a project called bakthat (https://github.com/tsileo/bakthat) and I have plans to push my changes back into the original software when I get in touch with the author.
 
