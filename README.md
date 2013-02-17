@@ -54,7 +54,7 @@ This file can walk files within a directory and only back up files older then a 
 local copy after the remote end is uploaded with a verified md5sum. This script will also refuse to overwrite an existing filename
 on cloudfiles, and will skip the local backup after logging the error.
 
-You can execute this directly if you don't want to write your own apps to utilize bakthatswift.py.
+You can use this helper script if you don't want to write your own apps/shell script to utilize bakthatswift.py.
 
 ###Sample filewalker.conf
 ```[filewalker]
