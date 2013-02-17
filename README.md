@@ -84,33 +84,33 @@ python2.7 filewalker.py restore -f name-of-file.bz2.tgz.enc --config filewalker.
 
 # Command examples
 ## filewalker.py
-# Run a backup in test mode (zero action taken)
+### Run a backup in test mode (zero action taken)
 PRO-TIP: Adding --noop with any value after it causes no-op to take effect.
  filewalker.py backup --config filewalker.conf --noop true`
 
-# Run a backup against the configured directory.
+### Run a backup against the configured directory.
 `/usr/bin/env python filewalker.py backup --config filewalker.conf`
 
-# Run a restore.
+### Run a restore.
 `/usr/bin/env python filewalker.py restore --config filewalker.conf -f remote-filename-to-restore`
 
 ## bakthatswift.py
-# Run interactive config setup.
+### Run interactive config setup.
 `/usr/bin/env python bakthatswift.py configure`
 
-# Backup a file explicitly.
+### Backup a file explicitly.
 `/usr/bin/env python bakthatswift.py backup -c bakthatswift.conf -f filename-to-backup`
 
-# Restore a file.
+### Restore a file.
 `/usr/bin/env python bakthatswift.py restore -c bakthatswift.conf -f filename-to-restore`
 
-# Delete a file in the container:
+### Delete a file in the container:
 `/usr/bin/env python bakthatswift.py delete -c bakthatswift.conf -f remote-file-to-delete`
 
-# List files in container.
+### List files in container.
 `/usr/bin/env python bakthatswift.py ls -c bakthatswift.conf`
 
-# Retrieve md5 for explicit file in container.
+### Retrieve md5 for explicit file in container.
 `/usr/bin/env python bakthatswift.py md5 -c bakthatswift.conf -f filename-for-wanted-md5-value`
 
 
