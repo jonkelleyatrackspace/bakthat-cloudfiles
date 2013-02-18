@@ -26,15 +26,16 @@ class LogClass():
         self.logger.addHandler(fh)
         self.logger.addHandler(ch)
 
-instance = LogClass()
+if not __name__ == '__main__':
+    instance = LogClass()
 
 if __name__ == '__main__':
     """ Pretty much how to use this from a module """
     logclass = LogClass()
     print("You found the secret cow level.")
-    logclass.logger.debug('DEBUG.TEST.MESSAGE')
-    logclass.logger.info('INFO.TEST.MESSAGE')
-    logclass.logger.warn('WARN.TEST.MESSAGE')
-    logclass.logger.error('ERROR.TEST.MESSAGE')
-    logclass.logger.critical('CRITICAL.TEST.MESSAGE')
+    logclass.logger.debug('FOR SOME VERBOSITY')
+    logclass.logger.info( 'FOR THE LONG WINDED')
+    logclass.logger.warn( 'FOR THE ATTENTION SEEKERS')
+    logclass.logger.error('FOR THOSE WHO LIKE TO BE A BUZZKILL.')
+    logclass.logger.critical('FOR THOSE WHO LIKE TO THROW TANTRUMS')
 
