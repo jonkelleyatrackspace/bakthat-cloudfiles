@@ -1,4 +1,6 @@
 #!/usr/bin/python
+
+#
 """
 Copyright (c) 2012 Thomas Sileo
 Copyright (c) 2012 Jon Kelley (cloudfiles support + other changes)
@@ -273,13 +275,13 @@ class GlacierBackend:
         archive_id = self.get_archive_id(keyname)
         if archive_id:
             self.vault.delete_archive(archive_id)
-            with glacier_shelve() as d:
-                archives = d["archives"]
+            d = glacier_shelve()
+            archives = d["archives"]
 
-                if keyname in archives:
-                    del archives[keyname]
+            if keyname in archives:
+                del archives[keyname]
 
-                d["archives"] = archives
+            d["archives"] = archives
 
             self.backup_inventory()
 
