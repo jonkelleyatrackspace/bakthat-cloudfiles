@@ -30,7 +30,7 @@ instance = LogClass()
 
 if __name__ == '__main__':
     """ Pretty much how to use this from a module """
-    logclass = LogClass('test')
+    logclass = LogClass()
     print("You found the secret cow level.")
     logclass.logger.debug('DEBUG.TEST.MESSAGE')
     logclass.logger.info('INFO.TEST.MESSAGE')
