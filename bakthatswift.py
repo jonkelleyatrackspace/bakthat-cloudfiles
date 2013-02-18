@@ -195,7 +195,7 @@ class GlacierBackend:
         archive_id = self.vault.create_archive_from_file(file_obj=filename)
 
         # Storing the filename => archive_id data.
-        d = glacier_shelve():
+        d = glacier_shelve()
         if not d.has_key("archives"):
             d["archives"] = dict()
 
@@ -235,13 +235,13 @@ class GlacierBackend:
         jobs = d["jobs"]
         job = None
 
-            if keyname in jobs:
-                # The job is already in shelve
-                job_id = jobs[keyname]
-                try:
-                    job = self.vault.get_job(job_id)
-                except UnexpectedHTTPResponseError: # Return a 404 if the job is no more available
-                    del job[keyname]
+        if keyname in jobs:
+            # The job is already in shelve
+            job_id = jobs[keyname]
+            try:
+                job = self.vault.get_job(job_id)
+            except UnexpectedHTTPResponseError: # Return a 404 if the job is no more available
+                del job[keyname]
 
             if not job:
                 # Job initialization
