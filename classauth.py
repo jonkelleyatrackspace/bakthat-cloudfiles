@@ -78,8 +78,8 @@ class RSAuth:
             apikey          = AUTH_UK_KEY
             auth_endpointurl=AUTH_UK_URL
         if region == '':
-            emsg="Region is null, why isn't region defined?"
-            print emsg
+            emsg="Region is defined as null! Why?? Expected [USA or LON] as arg to __init__"
+            log.instance.logger.critical(emsg, exc_info=True)
 
         self.token = None
         self.expiration = None
@@ -94,7 +94,6 @@ class RSAuth:
         # Does it!!
         self.authenticate(username, apikey, auth_endpointurl)
 
-    # authenticate() will be called for us when we create an object, but we want to make it callable on it's own
     def authenticate(self, username, apikey, auth_endpointurl, retries=0):
         print("rsauth.authenticate called")
         if retries >= 5:
@@ -169,7 +168,7 @@ class RSAuth:
             pass
         else:
             emsg="AUTH status_code: " + str(result.status_code) + " Expected [200 or 203]"
-            print(emsg)
+            log.instance.logger.error(emsg, exc_info=True)
             raise AuthException(emsg)
 
 
