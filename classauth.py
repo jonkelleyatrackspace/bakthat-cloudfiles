@@ -370,50 +370,51 @@ if __name__ == '__main__':
             a = classauth.identity('USA')
             print a.get_token()
     """
-    print "---------------------------------------------------------------"
-    print "Secret Auth Benchmark Easter Egg"
-    print "This is what this library does."
-    print "\n"
-    print "---------------------------------------------------------------"
-    print "CACHED AUTH LIBRARY RESULT DEMONSTRATION:"
-    print "---------------------------------------------------------------"
+
     beforedemo = time.time()  # Sets up way to calculate demo time.
-    # >>>> Demo functions for this module:
-    # --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- 
     auth  = identity('dfw')
-    print "Auth Token:\t\t" + auth.get_token()                            # Auth token
-    print "Auth Tenant:\t\t" +  str(auth.get_tenantid())                       # Tenant id
-    print "Auth Expires:\t\t"  +  auth.get_expires()                       # Expiration if you want it
-
-    print "CloudDNS  Endpoint:\t" + auth.get_endpoint('cloudDNS') # If the endpoint has no region (ie clouddns, cloudservers) leave off the second arg
-    print "Databases Endpoint:\t" + auth.get_endpoint('cloudDatabases','ORD') # If the endpoint has a region, define region as SECOND arg.
-    print "Databases TenantID:\t" + auth.get_endpoint_tenantid('cloudDatabases','ORD') # Grabs a products tenant ID.
-
-    # print "Auth Servicecatalog:\t"  + str(auth.get_serviceCatalog())  # Prints entire service catalog as object.
-    # print auth.get_json()  # Prints pretty json for entire object.    # Prints entire auth object as pretty json.
-    # --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- 
-    # >>>> END DEMO SNIPLET
+    fast_token                          = auth.get_token()
+    fast_tenantid                       = str(auth.get_tenantid())
+    fast_expiration                     = auth.get_expires()
+    fast_clouddns_endpoint              = auth.get_endpoint('cloudDNS') 
+    fast_ord_clouddatabases_endpoint    = auth.get_endpoint('cloudDatabases','ORD')
+    fast_ord_clouddatabases_tenantid    = auth.get_endpoint_tenantid('cloudDatabases','ORD')
     afterdemo = time.time() # Sets up way to calculate demo time.
+
+    print "-----------------------------------------------------------------------------"
+    print "Secret Auth Benchmark Easter Egg"
+    print "This is what this library does to make auth fast as can be."
+    print "\n"
+    print "*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*"
+    print "CACHED AUTH LIBRARY RESULT DEMONSTRATION:"
+    print "*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*"
+
+    print "Auth Token:\t\t"         + fast_token      # Auth token
+    print "Auth Tenant:\t\t"        + fast_tenantid   # Tenant id
+    print "Auth Expires:\t\t"       + fast_expiration # Expiration if you want it
+
+    print "CloudDNS  Endpoint:\t"   + fast_clouddns_endpoint              # If the endpoint has no region (ie clouddns, cloudservers) leave off the second arg
+    print "Databases Endpoint:\t"   + fast_ord_clouddatabases_endpoint    # If the endpoint has a region, define region as SECOND arg.
+    print "Databases TenantID:\t"   +  fast_ord_clouddatabases_tenantid   # Grabs a products tenant ID.
     
     math = afterdemo - beforedemo
-    print "\n\nTOTAL TIME TAKEN WITH CACHE:\t " + str(math) + "(seconds)\n\n"
+    print "\nTime taken (on-disk):\t " + str(math) + "(seconds)\n\n"
 
-    print "---------------------------------------------------------------"
-    print "DEMO OF FORCING A REMOTE TOKEN PULL."
-    print "Only useful if you want to force a new serialized object to disk cache."
-    print "But this class handles that for you... so... look how slow it is."
-    print "---------------------------------------------------------------"
+
 
     beforedemo = time.time()  # Sets up way to calculate demo time.
-    # >>>> Demo functions while FORCING a new token:
-    # --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- 
-    reAuth  = identity('dfw','force')
-    print "Auth Token:\t" + reAuth.get_token()
-    print "Auth Expires:\t\t"  +  auth.get_expires()                       # Expiration if you want it
-    # --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- ---  --- --- 
-    # >>>> END DEMO SNIPLET
+    reAuth          = identity('dfw','force')
+    slow_token      = reAuth.get_token()
+    slow_expiration = reAuth.get_expires()
     afterdemo = time.time() # Sets up way to calculate demo time.
 
+    print "*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*"
+    print "DEMO OF FORCING A REMOTE TOKEN PULL."
+    print "There are reasons to force a remote token pull, but there arent many. It's slow."
+    print "*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*"
+    print "Auth Token:\t"       + slow_token
+    print "Auth Expires:\t\t"   + slow_expiration                       # Expiration if you want it
+
     math = afterdemo - beforedemo  
-    print "\n\nTOTAL TIME TAKEN WITH OUTBOUND TO IDENTITY API:\t " + str(math) + "(seconds)\n\n"
+    print "\nTime taken (via internet)\t " + str(math) + "(seconds)\nSlllllllowwwwwwwwwwwwwwwwwwwwww\n"
 
