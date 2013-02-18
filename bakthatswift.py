@@ -1,4 +1,4 @@
-#!/usr/bin/python
+w#!/usr/bin/python
 """
 Copyright (c) 2012 Thomas Sileo
 Copyright (c) 2012 Jon Kelley (cloudfiles support + other changes)
@@ -157,10 +157,9 @@ class GlacierBackend:
         """
         Backup the local inventory from shelve as a json string to S3
         """
-        with glacier_shelve() as d:
-            if not d.has_key("archives"):
-                d["archives"] = dict()
-
+        d = glacier_shelve()
+        if not d.has_key("archives"):
+            d["archives"] = dict()
             archives = d["archives"]
 
         s3_bucket = S3Backend(self.conf).bucket
@@ -182,25 +181,25 @@ class GlacierBackend:
 
         loaded_archives = json.loads(k.get_contents_as_string())
 
-        with glacier_shelve() as d:
-            if not d.has_key("archives"):
-                d["archives"] = dict()
+        d = glacier_shelve()
+        if not d.has_key("archives"):
+            d["archives"] = dict()
 
-            archives = loaded_archives
-            d["archives"] = archives
+        archives = loaded_archives
+        d["archives"] = archives
 
 
     def upload(self, keyname, filename):
         archive_id = self.vault.create_archive_from_file(file_obj=filename)
 
         # Storing the filename => archive_id data.
-        with glacier_shelve() as d:
-            if not d.has_key("archives"):
-                d["archives"] = dict()
+        d = glacier_shelve():
+        if not d.has_key("archives"):
+            d["archives"] = dict()
 
-            archives = d["archives"]
-            archives[keyname] = archive_id
-            d["archives"] = archives
+        archives = d["archives"]
+        archives[keyname] = archive_id
+        d["archives"] = archives
 
         self.backup_inventory()
 
@@ -208,14 +207,14 @@ class GlacierBackend:
         """
         Get the archive_id corresponding to the filename
         """
-        with glacier_shelve() as d:
-            if not d.has_key("archives"):
-                d["archives"] = dict()
+        d = glacier_shelve()
+        if not d.has_key("archives"):
+            d["archives"] = dict()
 
-            archives = d["archives"]
+        archives = d["archives"]
 
-            if filename in archives:
-                return archives[filename]
+        if filename in archives:
+            return archives[filename]
 
         return None
 
