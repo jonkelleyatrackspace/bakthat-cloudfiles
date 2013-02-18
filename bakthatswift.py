@@ -1,4 +1,4 @@
-w#!/usr/bin/python
+#!/usr/bin/python
 """
 Copyright (c) 2012 Thomas Sileo
 Copyright (c) 2012 Jon Kelley (cloudfiles support + other changes)
@@ -226,12 +226,12 @@ class GlacierBackend:
         if not archive_id:
             return
         
-        with glacier_shelve() as d:
-            if not d.has_key("jobs"):
-                d["jobs"] = dict()
+        d = glacier_shelve()
+        if not d.has_key("jobs"):
+            d["jobs"] = dict()
 
-            jobs = d["jobs"]
-            job = None
+        jobs = d["jobs"]
+        job = None
 
             if keyname in jobs:
                 # The job is already in shelve
@@ -263,11 +263,11 @@ class GlacierBackend:
             return None
 
     def ls(self):
-        with glacier_shelve() as d:
-            if not d.has_key("archives"):
-                d["archives"] = dict()
+        d = glacier_shelve()
+        if not d.has_key("archives"):
+            d["archives"] = dict()
 
-            return d["archives"].keys()
+        return d["archives"].keys()
 
     def delete(self, keyname):
         archive_id = self.get_archive_id(keyname)
