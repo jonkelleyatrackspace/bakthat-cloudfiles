@@ -2,7 +2,5 @@ boto
 beefish
 pycrypto
 aaargh
-requests
 python-dateutil
 python-swiftclient
-

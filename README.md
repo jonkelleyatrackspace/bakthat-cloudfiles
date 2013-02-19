@@ -20,7 +20,7 @@ Some features of the suite:
 * `beefish-0.1.1.tar.gz` or `pip install beefish`
 * `pycrypto-2.6.tar.gz` or `pip install pycrypto`
 * `aaargh-0.4.tar.gz` or `pip install aaargh`
-* `requests-1.1.0.tar.gz` or `pip install requests`
+* `requests-1.1.0.tar.gz` but 1.1.0 build 0x010100 is included.
 * `python-dateutil-2.1.tar.gz` or `pip install python-dateutil`
 * `python-swiftclient-1.3.0.tar.gz` or `pip install python-swiftclient`
 
