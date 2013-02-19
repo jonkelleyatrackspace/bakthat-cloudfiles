@@ -445,8 +445,12 @@ class SwiftBackend(object):
 
     def delete(self, keyname):
         """ REFACTORED FOR PYRAX """
-        log.instance.logger.info('Remote delete for ' + str(keyname))
-        files.delete_object(self.auth.url,self.auth.token,self.container,keyname)
+        if not self.object_exists(self.container,keyname):
+            log.instance.logger.warning('Cannot delete, file noexist: ' + str(keyname))
+        else:
+            print 'yyy'
+            log.instance.logger.info('Remote delete for ' + str(keyname))
+            files.delete_object(self.auth.url,self.auth.token,self.container,keyname)
 
 
 storage_backends = dict(s3=S3Backend, glacier=GlacierBackend, cloudfiles=SwiftBackend)
@@ -598,17 +602,17 @@ def delete(filename, destination="cloudfiles", **kwargs):
         log.instance.logger.error("No file to delete, use -f to specify one.")
         return
 
-    found_file_to_delete = False
-    for object in storage_backend.ls():
-        objectname = object['name']
-        if objectname == filename:
-            found_file_to_delete = objectname
-            
-        if found_file_to_delete:
-            storage_backend.delete(objectname)
-        else:
-            log.instance.logger.error("No file " + str(filename) + " lives on this container.")
-            
+#    found_file_to_delete = False
+#    for object in storage_backend.ls():
+#        objectname = object['name']
+#        if objectname == filename:
+#            found_file_to_delete = objectname
+#            
+#        if found_file_to_delete:
+    storage_backend.delete(filename)
+#        else:
+#            log.instance.logger.error("No file " + str(filename) + " lives on this container.")
+#            
 #
 #    keys = [name for name in storage_backend.ls() if name.startswith(filename)]
 #    if not keys:
