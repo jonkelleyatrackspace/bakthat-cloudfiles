@@ -36,8 +36,9 @@ import aaargh       # Best ARG parsing library anywhere.
 import time         # Because time is time, man.
 
 # Auth
-import pickle# Used for file-base serialized object access. Yeah.
-import requests, os, json       # Obvious.
+import pickle                   # Used for file-base serialized object access. Yeah.
+import requestsd0390d4          # Requests by kennethreitz is a nice httplib wrapper, but rapidly changing codebase
+import os, json                 # Obvious.
 import time, dateutil.parser    # Used heavily in tokenexpired()
 
 
@@ -115,7 +116,7 @@ class RSAuth:
             log.instance.logger.debug("Using auth payload: " + str(json.dumps(auth_payload)))
             log.instance.logger.debug("Using headers: " + str(self.headers))
             try:
-                r = requests.post(auth_endpointurl, data=json.dumps(auth_payload), headers=self.headers)
+                r = requestsd0390d4.post(auth_endpointurl, data=json.dumps(auth_payload), headers=self.headers)
                 self.check_http_response_status(r)
                 log.instance.logger.debug("Auth exchange success!")
             except:
