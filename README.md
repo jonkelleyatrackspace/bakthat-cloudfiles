@@ -13,12 +13,17 @@ Some features of the suite:
 * Python 2.6 or 2.7 tested.
 * Install gcc, make, and the python devel libraries with your favorite package manager.
 * `easy_install pip` if you do not already have pip installed with your python distribution.
-* You will need to install the modules required via pip `pip install -r reqs.txt`
-Modules: ```aaargh
-beefish
-pycrypto
-boto
-python-swiftclient```
+* You will need to install the modules required via pip `pip install -r depends.txt`
+
+## Yeah but what are the exact requirements?
+* `boto-2.8.0.tar.gz` or `pip install boto`
+* `beefish-0.1.1.tar.gz` or `pip install beefish`
+* `pycrypto-2.6.tar.gz` or `pip install pycrypto`
+* `aaargh-0.4.tar.gz` or `pip install aaargh`
+* `requests-1.1.0.tar.gz` or `pip install requests`
+* `python-dateutil-2.1.tar.gz` or `pip install python-dateutil`
+* `python-swiftclient-1.3.0.tar.gz` or `pip install python-swiftclient`
+
 
 # What do these .py files do?
 ## bakthatswift.py
